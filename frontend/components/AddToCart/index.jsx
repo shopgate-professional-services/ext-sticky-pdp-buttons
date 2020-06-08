@@ -2,11 +2,16 @@ import React, {
   useContext,
 } from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 import { AddToCartButton } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ThemeContext, withCurrentProduct } from '@shopgate/engage/core';
 import 'intersection-observer';
 import connect from './connector';
+
+const styles = {
+  ctaButton: css({ marginRight: 12 }).toString(),
+};
 
 /**
 * @param {Object} props Props
@@ -51,6 +56,7 @@ const AddToCart = ({ addToCart, disabled, loading }) => {
       isLoading={loading}
       iconSize={22}
       buttonSize={50}
+      className={styles.ctaButton}
     />
   );
 };
