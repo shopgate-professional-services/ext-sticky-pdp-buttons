@@ -37,7 +37,6 @@ const styles = {
     marginTop: -255,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    marginRight: 15,
     ' > *': {
       transition: 'margin 500ms',
       pointerEvents: 'auto',
@@ -47,6 +46,7 @@ const styles = {
     zIndex: 1, // Prevents the icons to be visible outside of the circle
     fontSize: 29,
     marginBottom: 3,
+    marginRight: 15,
   }).toString(),
   ripple: css({
     padding: 8,

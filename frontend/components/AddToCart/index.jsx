@@ -2,6 +2,7 @@ import React, {
   useContext,
 } from 'react';
 import PropTypes from 'prop-types';
+import { css } from 'glamor';
 import { AddToCartButton } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ThemeContext, withCurrentProduct } from '@shopgate/engage/core';
@@ -12,6 +13,7 @@ import connect from './connector';
 const styles = {
   button: css({
     marginTop: 10,
+    marginRight: 12,
   }).toString(),
 };
 
