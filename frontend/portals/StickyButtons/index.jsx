@@ -23,7 +23,7 @@ const styles = {
     },
     '&.stuck': {
       '> div > *:not(:last-child)': {
-        marginTop: '-30px !important',
+        marginTop: '-35px !important',
       },
       ' .click-catcher': {
         display: 'block',
@@ -40,10 +40,11 @@ const styles = {
     ' > *': {
       transition: 'margin 500ms',
       pointerEvents: 'auto',
+      zIndex: 1,
     },
   }),
   favButton: css({
-    zIndex: 1, // Prevents the icons to be visible outside of the circle
+    zIndex: 1,
     fontSize: 29,
     marginBottom: 3,
     marginRight: 15,

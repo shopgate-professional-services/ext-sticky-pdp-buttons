@@ -6,7 +6,6 @@ import { css } from 'glamor';
 import { AddToCartButton } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ThemeContext, withCurrentProduct } from '@shopgate/engage/core';
-import { css } from 'glamor';
 import 'intersection-observer';
 import connect from './connector';
 
