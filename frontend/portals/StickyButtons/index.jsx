@@ -33,8 +33,8 @@ const styles = {
   inner: css({
     display: 'flex',
     flexDirection: 'column',
-    height: 280,
-    marginTop: -255,
+    height: 325,
+    marginTop: -300,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     ' > *': {
