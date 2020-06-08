@@ -46,6 +46,7 @@ const styles = {
   favButton: css({
     zIndex: 1, // Prevents the icons to be visible outside of the circle
     fontSize: 29,
+    marginBottom: 3,
   }).toString(),
   ripple: css({
     padding: 8,

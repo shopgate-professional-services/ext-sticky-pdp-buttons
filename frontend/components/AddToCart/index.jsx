@@ -5,8 +5,15 @@ import PropTypes from 'prop-types';
 import { AddToCartButton } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { ThemeContext, withCurrentProduct } from '@shopgate/engage/core';
+import { css } from 'glamor';
 import 'intersection-observer';
 import connect from './connector';
+
+const styles = {
+  button: css({
+    marginTop: 10,
+  }).toString(),
+};
 
 /**
 * @param {Object} props Props
@@ -46,6 +53,7 @@ const AddToCart = ({ addToCart, disabled, loading }) => {
 
   return (
     <AddToCartButton
+      className={styles.button}
       onClick={handleClick}
       isDisabled={disabled}
       isLoading={loading}
