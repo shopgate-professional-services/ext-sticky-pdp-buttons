@@ -11,7 +11,7 @@ import connect from './connector';
 
 const styles = {
   button: css({
-    marginTop: 10,
+    marginTop: 6,
     marginRight: 12,
   }).toString(),
 };
@@ -36,7 +36,6 @@ const AddToCart = ({ addToCart, disabled, loading }) => {
   const handleClick = () => {
     conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
-        // TODO: highlight something
         return;
       }
 

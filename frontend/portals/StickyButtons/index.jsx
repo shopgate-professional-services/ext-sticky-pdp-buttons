@@ -15,15 +15,16 @@ const styles = {
     pointerEvents: 'none',
     ' .click-catcher': {
       display: 'none',
-      height: 90,
+      height: 75,
       position: 'absolute',
       width: 50,
       zIndex: 5,
-      bottom: 48,
+      bottom: 58,
+      right: 15,
     },
     '&.stuck': {
-      '> div > *:not(:last-child)': {
-        marginTop: '-35px !important',
+      '> div > *:not(:last-child):not(.click-catcher)': {
+        marginTop: '-40px !important',
       },
       ' .click-catcher': {
         display: 'block',
@@ -59,7 +60,7 @@ const styles = {
 * @return {JSX}
 */
 const StickyButtons = ({ productId, isFavorite }) => {
-  const ref = useRef();
+  const ref = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
