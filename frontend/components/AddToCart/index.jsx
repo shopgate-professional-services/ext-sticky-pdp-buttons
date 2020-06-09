@@ -33,21 +33,21 @@ const AddToCart = ({ addToCart, disabled, loading }) => {
   /**
    * add to cart
    */
-  const handleClick = () => {
-    conditioner.check().then((fulfilled) => {
-      if (!fulfilled) {
-        return;
-      }
+  const handleClick = async () => {
+    const fulfilled = await conditioner.check();
 
-      addToCart({
-        productId: variantId || productId,
-        options,
-        quantity,
-      });
+    if (!fulfilled) {
+      return false;
+    }
 
-      broadcastLiveMessage('product.adding_item', {
-        params: { count: quantity },
-      });
+    broadcastLiveMessage('product.adding_item', {
+      params: { count: quantity },
+    });
+
+    return addToCart({
+      productId: variantId || productId,
+      options,
+      quantity,
     });
   };
 

@@ -7,7 +7,7 @@
     "lint": "eslint --parser babel-eslint --ignore-path ../.gitignore --ext .js --ext .jsx ."
   },
   "devDependencies": {
-    "@shopgate/engage": "^6.11.0",
+    "@shopgate/engage": "^6.13.4",
     "@shopgate/eslint-config": "^6.11.0",
     "eslint": "^6.8.0"
   },
@@ -15,7 +15,6 @@
     "@shopgate/engage": "^6.11.0"
   },
   "dependencies": {
-    "intersection-observer": "^0.10.0",
-    "stickybits": "^3.7.7"
+    "intersection-observer": "^0.10.0"
   }
 }
