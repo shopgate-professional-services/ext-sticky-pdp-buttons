@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate-project/sticky-pdp-buttons",
+  "components": [
+    {
+      "id": "StickyButtons",
+      "path": "frontend/portals/StickyButtons/index.jsx",
+      "target": "product.sticky-media.after",
+      "type": "portals"
+    },
+    {
+      "id": "Hide",
+      "path": "frontend/portals/Hide/index.jsx",
+      "target": ["product.add-to-cart-bar", "product.ctas"],
+      "type": "portals"
+    }
+  ],
+  "configuration": {
+  },
+  "steps": []
+}
