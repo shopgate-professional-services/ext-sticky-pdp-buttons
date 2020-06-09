@@ -1,10 +1,6 @@
 import { connect } from 'react-redux';
-import { isRelativeProductOnList } from '@shopgate/pwa-common-commerce/favorites/selectors';
-import {
-  hasProductVariants,
-  isProductOrderable,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { isProductPageLoading } from '@shopgate/pwa-common-commerce/product/selectors/page';
+import { isRelativeProductOnList } from '@shopgate/engage/favorites';
+import { hasProductVariants, isProductOrderable, isProductPageLoading } from '@shopgate/engage/product';
 import { addProductToCart } from './actions';
 
 /**
@@ -20,7 +16,6 @@ const mapStateToProps = (state, props) => ({
 
 /**
  * @param {Function} dispatch The redux dispatch function.
- * @param {Function} props The component props.
  * @return {Object} The extended component props.
  */
 const mapDispatchToProps = dispatch => ({

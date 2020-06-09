@@ -108,7 +108,4 @@ StickyButtons.propTypes = {
   productId: PropTypes.string.isRequired,
 };
 
-StickyButtons.defaultProps = {
-};
-
 export default withCurrentProduct(connect(StickyButtons));
