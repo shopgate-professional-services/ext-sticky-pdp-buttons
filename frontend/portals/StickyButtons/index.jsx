@@ -34,8 +34,8 @@ const styles = {
   inner: css({
     display: 'flex',
     flexDirection: 'column',
-    height: 325,
-    marginTop: -300,
+    height: 'calc(325px + var(--safe-area-inset-top))',
+    marginTop: 'calc(-300px - var(--safe-area-inset-top))',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     ' > *': {
@@ -79,7 +79,10 @@ const StickyButtons = ({ productId, isFavorite }) => {
    * expand by scrolling box into view again
    */
   const expand = () => {
-    ref.current.scrollIntoView(false);
+    ref.current.scrollIntoView({
+      behavior: 'smooth',
+      block: 'end',
+    });
   };
 
   return (
