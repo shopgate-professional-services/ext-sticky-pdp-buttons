@@ -25,6 +25,7 @@ const styles = {
     '&.stuck': {
       '> div > *:not(:last-child):not(.click-catcher)': {
         marginTop: '-40px !important',
+        boxShadow: '0px -3px 2px rgba(0, 0, 0, 0.2)',
       },
       ' .click-catcher': {
         display: 'block',
@@ -36,6 +37,7 @@ const styles = {
     flexDirection: 'column',
     height: 'calc(325px + var(--safe-area-inset-top))',
     marginTop: 'calc(-300px - var(--safe-area-inset-top))',
+    marginBottom: -25,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     ' > *': {
