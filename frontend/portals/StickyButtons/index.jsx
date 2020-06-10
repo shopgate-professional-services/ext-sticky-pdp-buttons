@@ -57,7 +57,7 @@ const styles = {
   }).toString(),
   scrollTo: css({
     position: 'absolute',
-    top: 0,
+    top: -1000,
   }).toString(),
 };
 
