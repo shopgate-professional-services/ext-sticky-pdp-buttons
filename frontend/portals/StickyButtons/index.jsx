@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { FavoritesButton, Portal } from '@shopgate/engage/components';
@@ -55,6 +55,10 @@ const styles = {
   ripple: css({
     padding: 8,
   }).toString(),
+  scrollTo: css({
+    position: 'absolute',
+    top: 0,
+  }).toString(),
 };
 
 /**
@@ -62,7 +66,8 @@ const styles = {
 * @return {JSX}
 */
 const StickyButtons = ({ productId, isFavorite }) => {
-  const ref = useRef(null);
+  const wrapperRef = useRef(null);
+  const scrollToRef = useRef(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,7 +75,7 @@ const StickyButtons = ({ productId, isFavorite }) => {
       { threshold: [1] }
     );
 
-    observer.observe(ref.current);
+    observer.observe(wrapperRef.current);
 
     return () => {
       observer.disconnect();
@@ -81,27 +86,30 @@ const StickyButtons = ({ productId, isFavorite }) => {
    * expand by scrolling box into view again
    */
   const expand = () => {
-    ref.current.scrollIntoView({
+    scrollToRef.current.scrollIntoView({
       behavior: 'smooth',
       block: 'end',
     });
   };
 
   return (
-    <div className={styles.wrapper} ref={ref}>
-      <div className={styles.inner}>
-        <Portal name="product.sticky-buttons.before" />
-        <FavoritesButton
-          className={styles.favButton}
-          rippleClassName={styles.ripple}
-          active={isFavorite}
-          productId={productId}
-        />
-        <Portal name="product.sticky-buttons.between" />
-        <div className="click-catcher" onClick={expand} />
-        <AddToCart />
+    <Fragment>
+      <div className={styles.wrapper} ref={wrapperRef}>
+        <div className={styles.inner}>
+          <Portal name="product.sticky-buttons.before" />
+          <FavoritesButton
+            className={styles.favButton}
+            rippleClassName={styles.ripple}
+            active={isFavorite}
+            productId={productId}
+          />
+          <Portal name="product.sticky-buttons.between" />
+          <div className="click-catcher" onClick={expand} />
+          <AddToCart />
+        </div>
       </div>
-    </div>
+      <div className={styles.scrollTo} ref={scrollToRef} />
+    </Fragment>
   );
 };
 
