@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { isRelativeProductOnList } from '@shopgate/engage/favorites';
+import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
 
 /**
  * @param {Object} state The current application state.
@@ -7,7 +7,7 @@ import { isRelativeProductOnList } from '@shopgate/engage/favorites';
  * @return {Object} The extended component props.
  */
 const mapStateToProps = (state, props) => ({
-  isFavorite: isRelativeProductOnList(state, props),
+  isFavorite: isCurrentProductOnFavoriteList(state, props),
 });
 
 export default connect(mapStateToProps);
