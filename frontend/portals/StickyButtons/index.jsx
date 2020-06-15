@@ -106,7 +106,11 @@ const StickyButtons = ({ productId, variantId, isFavorite }) => {
 StickyButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
-  variantId: PropTypes.string.isRequired,
+  variantId: PropTypes.string,
+};
+
+StickyButtons.defaultProps = {
+  variantId: null,
 };
 
 export default withCurrentProduct(connect(StickyButtons));
