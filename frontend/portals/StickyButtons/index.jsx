@@ -65,7 +65,7 @@ const styles = {
 * @param {Object} props Props
 * @return {JSX}
 */
-const StickyButtons = ({ productId, isFavorite }) => {
+const StickyButtons = ({ productId, variantId, isFavorite }) => {
   const wrapperRef = useRef(null);
   const scrollToRef = useRef(null);
 
@@ -101,7 +101,7 @@ const StickyButtons = ({ productId, isFavorite }) => {
             className={styles.favButton}
             rippleClassName={styles.ripple}
             active={isFavorite}
-            productId={productId}
+            productId={variantId || productId}
           />
           <Portal name="product.sticky-buttons.between" />
           <div className="click-catcher" onClick={expand} />
@@ -116,9 +116,11 @@ const StickyButtons = ({ productId, isFavorite }) => {
 StickyButtons.propTypes = {
   isFavorite: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
+  variantId: PropTypes.string,
 };
 
 StickyButtons.defaultProps = {
+  variantId: null,
 };
 
 export default withCurrentProduct(connect(StickyButtons));

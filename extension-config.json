@@ -3,7 +3,7 @@
   "id": "@shopgate-project/sticky-pdp-buttons",
   "components": [
     {
-      "id": "PdpSwatches",
+      "id": "StickyButtons",
       "path": "frontend/portals/StickyButtons/index.jsx",
       "target": "product.sticky-media.after",
       "type": "portals"

@@ -69,7 +69,4 @@ AddToCart.propTypes = {
   loading: PropTypes.bool.isRequired,
 };
 
-AddToCart.defaultProps = {
-};
-
 export default withCurrentProduct(connect(AddToCart));

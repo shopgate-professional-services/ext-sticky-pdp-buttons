@@ -1,13 +1,13 @@
 {
   "name": "@shopgate-project/sticky-pdp-buttons",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "Sticky media section on pdp extension",
   "license": "Apache-2.0",
   "scripts": {
     "lint": "eslint --parser babel-eslint --ignore-path ../.gitignore --ext .js --ext .jsx ."
   },
   "devDependencies": {
-    "@shopgate/engage": "^6.13.4",
+    "@shopgate/engage": "^6.11.0",
     "@shopgate/eslint-config": "^6.11.0",
     "eslint": "^6.8.0"
   },
