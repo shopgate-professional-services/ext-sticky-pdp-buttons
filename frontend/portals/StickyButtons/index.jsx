@@ -25,6 +25,7 @@ const styles = {
     '&.stuck': {
       '> div > *:not(:last-child):not(.click-catcher)': {
         marginTop: '-40px !important',
+        marginBottom: '0px !important',
         boxShadow: '0px -3px 2px rgba(0, 0, 0, 0.2)',
       },
       ' .click-catcher': {
@@ -35,8 +36,8 @@ const styles = {
   inner: css({
     display: 'flex',
     flexDirection: 'column',
-    height: 'calc(325px + var(--safe-area-inset-top))',
-    marginTop: 'calc(-300px - var(--safe-area-inset-top))',
+    height: 'calc(415px + var(--safe-area-inset-top))',
+    marginTop: 'calc(-390px - var(--safe-area-inset-top))',
     marginBottom: -25,
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
@@ -44,12 +45,12 @@ const styles = {
       transition: 'margin 500ms',
       pointerEvents: 'auto',
       zIndex: 1,
-      marginBottom: '25px',
+      marginBottom: '20px',
       '@media(max-width: 375px)': {
-        marginBottom: '20px',
+        marginBottom: '15px',
       },
       '@media(max-width: 320px)': {
-        marginBottom: '15px',
+        marginBottom: '10px',
       },
     },
     ' > *:last-child': {
@@ -59,7 +60,6 @@ const styles = {
   favButton: css({
     zIndex: 1,
     fontSize: 29,
-    marginBottom: 3,
     marginRight: 15,
   }).toString(),
   ripple: css({
