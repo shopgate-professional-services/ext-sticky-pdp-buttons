@@ -44,6 +44,16 @@ const styles = {
       transition: 'margin 500ms',
       pointerEvents: 'auto',
       zIndex: 1,
+      marginBottom: '25px',
+      '@media(max-width: 375px)': {
+        marginBottom: '20px',
+      },
+      '@media(max-width: 320px)': {
+        marginBottom: '15px',
+      },
+    },
+    ' > *:last-child': {
+      marginBottom: 0,
     },
   }),
   favButton: css({
