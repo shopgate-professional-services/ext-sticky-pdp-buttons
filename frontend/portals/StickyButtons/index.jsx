@@ -75,9 +75,14 @@ const styles = {
 * @param {Object} props Props
 * @return {JSX}
 */
-const StickyButtons = ({ productId, variantId, isFavorite }) => {
+const StickyButtons = (
+  {
+    productId, variantId, isFavorite, getDeviceInformation,
+  }
+) => {
   const wrapperRef = useRef(null);
   const scrollToRef = useRef(null);
+  const isTablet = getDeviceInformation.type === 'tablet';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -107,15 +112,17 @@ const StickyButtons = ({ productId, variantId, isFavorite }) => {
       <div className={styles.wrapper} ref={wrapperRef}>
         <div className={styles.inner}>
           <Portal name="product.sticky-buttons.before" />
-          <FavoritesButton
-            className={styles.favButton}
-            rippleClassName={styles.ripple}
-            active={isFavorite}
-            productId={variantId || productId}
-          />
+          {!isTablet &&
+            <FavoritesButton
+              className={styles.favButton}
+              rippleClassName={styles.ripple}
+              active={isFavorite}
+              productId={variantId || productId}
+            />}
           <Portal name="product.sticky-buttons.between" />
           <div className="click-catcher" onClick={expand} />
-          <AddToCart />
+          {!isTablet &&
+            <AddToCart />}
         </div>
       </div>
       <div className={styles.scrollTo} ref={scrollToRef} />
@@ -124,6 +131,9 @@ const StickyButtons = ({ productId, variantId, isFavorite }) => {
 };
 
 StickyButtons.propTypes = {
+  getDeviceInformation: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+  }).isRequired,
   isFavorite: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   variantId: PropTypes.string,

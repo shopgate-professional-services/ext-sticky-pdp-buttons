@@ -1,17 +1,23 @@
 {
-  "version": "1.0.0",
+  "version": "1.0.2",
   "id": "@shopgate-project/sticky-pdp-buttons",
   "components": [
     {
       "id": "StickyButtons",
       "path": "frontend/portals/StickyButtons/index.jsx",
-      "target": "product.sticky-media.after",
+      "target": [
+        "product.sticky-media.after",
+        "product.sticky-media.tablet.after"
+      ],
       "type": "portals"
     },
     {
       "id": "Hide",
       "path": "frontend/portals/Hide/index.jsx",
-      "target": ["product.add-to-cart-bar", "product.ctas"],
+      "target": [
+        "product.add-to-cart-bar",
+        "product.ctas"
+      ],
       "type": "portals"
     }
   ],
