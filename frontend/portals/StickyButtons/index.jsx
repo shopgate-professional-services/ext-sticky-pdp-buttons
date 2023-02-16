@@ -70,7 +70,20 @@ const styles = {
     top: -1000,
   }).toString(),
 };
-
+const wrapperTablet = css(
+  styles.wrapper,
+  {
+    top: -200,
+  }
+);
+const innerTablet = css(
+  styles.inner,
+  {
+    height: 'calc(380px + var(--safe-area-inset-top))',
+    marginTop: 'calc(-390px - var(--safe-area-inset-top))',
+    marginBottom: 0,
+  }
+);
 /**
 * @param {Object} props Props
 * @return {JSX}
@@ -109,8 +122,8 @@ const StickyButtons = (
 
   return (
     <Fragment>
-      <div className={styles.wrapper} ref={wrapperRef}>
-        <div className={styles.inner}>
+      <div className={!isTablet ? styles.wrapper : wrapperTablet} ref={wrapperRef}>
+        <div className={!isTablet ? styles.inner : innerTablet}>
           <Portal name="product.sticky-buttons.before" />
           {!isTablet &&
             <FavoritesButton
