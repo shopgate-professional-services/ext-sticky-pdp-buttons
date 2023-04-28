@@ -73,15 +73,21 @@ const styles = {
 const wrapperTablet = css(
   styles.wrapper,
   {
-    top: -200,
+    position: 'relative',
+    top: 0,
+    marginTop: 70,
   }
 );
 const innerTablet = css(
   styles.inner,
   {
-    height: 'calc(380px + var(--safe-area-inset-top))',
-    marginTop: 'calc(-390px - var(--safe-area-inset-top))',
-    marginBottom: 0,
+    height: 200,
+    marginTop: -300,
+    marginBottom: 150,
+    alignItems: 'flex-start',
+    marginLeft: '50%',
+    justifyContent: 'flex-start',
+    paddingLeft: 40,
   }
 );
 /**
@@ -98,7 +104,10 @@ const StickyButtons = (
   const isTablet = getDeviceInformation.type === 'tablet';
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = isTablet ? new IntersectionObserver(
+      ([e]) => e.target.classList.toggle('tablet', e.intersectionRatio < 1),
+      { threshold: [1] }
+    ) : new IntersectionObserver(
       ([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
       { threshold: [1] }
     );
