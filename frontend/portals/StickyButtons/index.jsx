@@ -70,54 +70,34 @@ const styles = {
     top: -1000,
   }).toString(),
 };
-const wrapperTablet = css(
-  styles.wrapper,
-  {
-    position: 'relative',
-    top: 0,
-    marginTop: 70,
-  }
-);
-const innerTablet = css(
-  styles.inner,
-  {
-    height: 200,
-    marginTop: -300,
-    marginBottom: 150,
-    alignItems: 'flex-start',
-    marginLeft: '50%',
-    justifyContent: 'flex-start',
-    paddingLeft: 40,
-  }
-);
+
 /**
 * @param {Object} props Props
 * @return {JSX}
 */
-const StickyButtons = (
-  {
-    productId, variantId, isFavorite, getDeviceInformation,
-  }
-) => {
-  const wrapperRef = useRef(null);
-  const scrollToRef = useRef(null);
+const StickyButtons = ({
+  productId, variantId, isFavorite, getDeviceInformation,
+}) => {
   const isTablet = getDeviceInformation.type === 'tablet';
 
+  const wrapperRef = useRef(null);
+  const scrollToRef = useRef(null);
+
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const observer = isTablet ? new IntersectionObserver(
-      ([e]) => e.target.classList.toggle('tablet', e.intersectionRatio < 1),
-      { threshold: [1] }
-    ) : new IntersectionObserver(
-      ([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
-      { threshold: [1] }
-    );
+    if (!isTablet) {
+      const observer = new IntersectionObserver(
+        ([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
+        { threshold: [1] }
+      );
 
-    observer.observe(wrapperRef.current);
+      observer.observe(wrapperRef.current);
 
-    return () => {
-      observer.disconnect();
-    };
-  });
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [isTablet]);
 
   /**
    * expand by scrolling box into view again
@@ -129,27 +109,31 @@ const StickyButtons = (
     });
   };
 
+  if (isTablet) {
+    return null;
+  }
+  /* eslint-disable jsx-a11y/click-events-have-key-events,
+    jsx-a11y/no-static-element-interactions */
   return (
     <Fragment>
-      <div className={!isTablet ? styles.wrapper : wrapperTablet} ref={wrapperRef}>
-        <div className={!isTablet ? styles.inner : innerTablet}>
+      <div className={styles.wrapper} ref={wrapperRef}>
+        <div className={styles.inner}>
           <Portal name="product.sticky-buttons.before" />
-          {!isTablet &&
-            <FavoritesButton
-              className={styles.favButton}
-              rippleClassName={styles.ripple}
-              active={isFavorite}
-              productId={variantId || productId}
-            />}
+          <FavoritesButton
+            className={styles.favButton}
+            rippleClassName={styles.ripple}
+            active={isFavorite}
+            productId={variantId || productId}
+          />
           <Portal name="product.sticky-buttons.between" />
           <div className="click-catcher" onClick={expand} />
-          {!isTablet &&
-            <AddToCart />}
+          <AddToCart />
         </div>
       </div>
       <div className={styles.scrollTo} ref={scrollToRef} />
     </Fragment>
   );
+  /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 };
 
 StickyButtons.propTypes = {

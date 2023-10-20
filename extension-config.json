@@ -5,10 +5,7 @@
     {
       "id": "StickyButtons",
       "path": "frontend/portals/StickyButtons/index.jsx",
-      "target": [
-        "product.sticky-media.after",
-        "product.sticky-media.tablet.after"
-      ],
+      "target": "product.sticky-media.after",
       "type": "portals"
     },
     {
