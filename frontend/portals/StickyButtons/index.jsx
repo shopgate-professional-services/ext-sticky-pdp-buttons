@@ -75,22 +75,29 @@ const styles = {
 * @param {Object} props Props
 * @return {JSX}
 */
-const StickyButtons = ({ productId, variantId, isFavorite }) => {
+const StickyButtons = ({
+  productId, variantId, isFavorite, getDeviceInformation,
+}) => {
+  const isTablet = getDeviceInformation.type === 'tablet';
+
   const wrapperRef = useRef(null);
   const scrollToRef = useRef(null);
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
-      { threshold: [1] }
-    );
+    if (!isTablet) {
+      const observer = new IntersectionObserver(
+        ([e]) => e.target.classList.toggle('stuck', e.intersectionRatio < 1),
+        { threshold: [1] }
+      );
 
-    observer.observe(wrapperRef.current);
+      observer.observe(wrapperRef.current);
 
-    return () => {
-      observer.disconnect();
-    };
-  });
+      return () => {
+        observer.disconnect();
+      };
+    }
+  }, [isTablet]);
 
   /**
    * expand by scrolling box into view again
@@ -102,6 +109,11 @@ const StickyButtons = ({ productId, variantId, isFavorite }) => {
     });
   };
 
+  if (isTablet) {
+    return null;
+  }
+  /* eslint-disable jsx-a11y/click-events-have-key-events,
+    jsx-a11y/no-static-element-interactions */
   return (
     <Fragment>
       <div className={styles.wrapper} ref={wrapperRef}>
@@ -121,9 +133,13 @@ const StickyButtons = ({ productId, variantId, isFavorite }) => {
       <div className={styles.scrollTo} ref={scrollToRef} />
     </Fragment>
   );
+  /* eslint-enable jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */
 };
 
 StickyButtons.propTypes = {
+  getDeviceInformation: PropTypes.shape({
+    type: PropTypes.string.isRequired,
+  }).isRequired,
   isFavorite: PropTypes.bool.isRequired,
   productId: PropTypes.string.isRequired,
   variantId: PropTypes.string,

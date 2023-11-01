@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
+import { getDeviceInformation } from '@shopgate/pwa-common/selectors/client';
 
 /**
  * @param {Object} state The current application state.
@@ -8,6 +9,7 @@ import { isCurrentProductOnFavoriteList } from '@shopgate/engage/favorites';
  */
 const mapStateToProps = (state, props) => ({
   isFavorite: isCurrentProductOnFavoriteList(state, props),
+  getDeviceInformation: getDeviceInformation(state),
 });
 
 export default connect(mapStateToProps);
