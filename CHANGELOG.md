@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ## [Unreleased]
 
+## 1.1.0
+### Added
+- improved functionality when used in combination with [@shopgate-project/tablet-adjustments](https://github.com/shopgate-professional-services/ext-tablet-adjustments/tree/v1.4.0) version 1.4.0
+
 ## [1.0.0]
 - initial release
 
