@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { css } from 'glamor';
 import { AddToCartButton } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import { ThemeContext, withCurrentProduct } from '@shopgate/engage/core';
+import { ThemeContext, withCurrentProduct, i18n } from '@shopgate/engage/core';
 import 'intersection-observer';
 import connect from './connector';
 
@@ -53,6 +53,7 @@ const AddToCart = ({ addToCart, disabled, loading }) => {
 
   return (
     <AddToCartButton
+      aria-label={i18n.text('product.add_to_cart')}
       className={styles.button}
       onClick={handleClick}
       isDisabled={disabled}
